@@ -7,5 +7,5 @@ public class Car{
     int destination;
     string type;
 
-	
+	GameObject thisCar;
 }

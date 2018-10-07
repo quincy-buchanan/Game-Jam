@@ -57,6 +57,27 @@ public class CarQueue {
         }
     }
 
+	public void PushCarEnd(Car c)
+	{
+		if (queue[size] == null)
+		{
+			queue [size] = c;
+			numCars++;
+		}
+	}
+
+	public void MoveCars()
+	{
+		for (int i = 0; i < size - 1; i++)
+		{
+			if (queue[i] == null)
+			{
+				queue [i] = queue [i + 1];
+				queue [i + 1] = null;
+			}
+		}
+	}
+
     public Car PopCar()
     {
         if (numCars > 0)

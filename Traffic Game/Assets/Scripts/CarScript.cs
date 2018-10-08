@@ -61,7 +61,6 @@ public class CarScript : MonoBehaviour {
     {
         if (velCounter < 1f)
         {
-            Debug.Log("got there");
             gameObject.transform.position += desiredVelocity * Time.deltaTime;
             velCounter += Time.deltaTime;
         }

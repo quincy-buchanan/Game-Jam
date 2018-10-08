@@ -44,21 +44,25 @@ public class TrafficLightScript : MonoBehaviour {
         if (roadSide == "l")
         {
             leftLightOn = !leftLightOn;
+            intersection.leftLightOn = leftLightOn;
             ChangeColor(leftLightOn);
         }
         else if (roadSide == "r")
         {
             rightLightOn = !rightLightOn;
+            intersection.rightLightOn = rightLightOn;
             ChangeColor(rightLightOn);
         }
         else if (roadSide == "t")
         {
             topLightOn = !topLightOn;
+            intersection.topLightOn = topLightOn;
             ChangeColor(topLightOn);
         }
         else if(roadSide == "b")
         {
             bottomLightOn = !bottomLightOn;
+            intersection.bottomLightOn = bottomLightOn;
             ChangeColor(bottomLightOn);
         }
     }

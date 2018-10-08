@@ -45,7 +45,7 @@ public class CarQueue {
             }
 
         }
-        return -1;
+        return -1; //reason for ghost cars
     }
     
     public void PushCar(GameObject c)
@@ -57,7 +57,7 @@ public class CarQueue {
         }
     }
 
-	public void PushCarEnd(GameObject c)
+	public void PushCarEnd(GameObject c) //check this
 	{
 		if (queue[size - 1] == null)
 		{
@@ -66,7 +66,6 @@ public class CarQueue {
 		}
         else
         {
-
         }
 	}
 
@@ -86,6 +85,7 @@ public class CarQueue {
 
     public GameObject PopCar()
     {
+        Debug.Log(numCars);
         if (numCars > 0)
         {
             GameObject tempCar = queue[0];
@@ -96,7 +96,8 @@ public class CarQueue {
                     queue[i].GetComponent<CarScript>().tick(); //this is bad practice
             }
             queue[size - 1] = null;
-            numCars--;
+            if (tempCar != null)
+                numCars--;
             return tempCar;
         }
         else

@@ -26,27 +26,10 @@ public class GameManagerScript : MonoBehaviour {
             timerLag--;
             tick();
         }
-
-        checkForStopLightToggle();
-    }
-
-    void checkForStopLightToggle()
-    {
         
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Debug.Log("Toggle");
-            if (intersectionArray[1].GetComponent<IntersectionScript>().leftLightOn)
-                intersectionArray[1].GetComponent<IntersectionScript>().leftLightOn = false;
-            else
-                intersectionArray[1].GetComponent<IntersectionScript>().leftLightOn = true;
-
-            if (intersectionArray[1].GetComponent<IntersectionScript>().rightLightOn)
-                intersectionArray[1].GetComponent<IntersectionScript>().rightLightOn = false;
-            else
-                intersectionArray[1].GetComponent<IntersectionScript>().rightLightOn = true;
-        }
     }
+
+    
 
     void tick()
     {

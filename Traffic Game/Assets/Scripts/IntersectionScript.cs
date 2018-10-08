@@ -25,6 +25,8 @@ public class IntersectionScript : MonoBehaviour {
 
     public GameObject carPrefab;
 
+    public bool testBool = false;
+
     // Use this for initialization
     void Start () {
         if (topQueueSize == 0)
@@ -125,6 +127,17 @@ public class IntersectionScript : MonoBehaviour {
     {
         //remember to account for gridlock (each road is full)
         //and collisions
+        
+
+        if (
+            (topIntersection == null || topIntersection.GetComponent<IntersectionScript>().bottomQueue.isFull()) &&
+            (bottomIntersection == null || bottomIntersection.GetComponent<IntersectionScript>().topQueue.isFull()) &&
+            (leftIntersection == null || leftIntersection.GetComponent<IntersectionScript>().rightQueue.isFull()) &&
+            (rightIntersection == null || rightIntersection.GetComponent<IntersectionScript>().leftQueue.isFull()))
+        {
+            return;
+        }
+        
 
         GameObject carToMove;
 
@@ -187,7 +200,7 @@ public class IntersectionScript : MonoBehaviour {
 
     void routeCar(GameObject carToMove)
     {
-        if (carToMove.GetComponent<CarScript>().destination == intersectionInt)
+        if (carToMove.GetComponent<CarScript>().destination == intersectionInt )
         {
             carToMove.GetComponent<CarScript>().reachedDestination();
         }
@@ -196,7 +209,7 @@ public class IntersectionScript : MonoBehaviour {
             string shortestRoute = "";
             int shortestRouteValue = 99;
 
-            if (leftIntersection != null)
+            if (leftIntersection != null && !leftIntersection.GetComponent<IntersectionScript>().rightQueue.isFull())
             {
                 int leftDistance = leftIntersection.GetComponent<IntersectionScript>().distanceTo(carToMove.GetComponent<CarScript>().destination);
                 if (leftDistance <= shortestRouteValue)
@@ -206,7 +219,7 @@ public class IntersectionScript : MonoBehaviour {
                 }
             }
 
-            if (rightIntersection != null)
+            if (rightIntersection != null && !rightIntersection.GetComponent<IntersectionScript>().leftQueue.isFull())
             {
                 int rightDistance = rightIntersection.GetComponent<IntersectionScript>().distanceTo(carToMove.GetComponent<CarScript>().destination);
                 if (rightDistance <= shortestRouteValue)
@@ -216,7 +229,7 @@ public class IntersectionScript : MonoBehaviour {
                 }
             }
 
-            if (topIntersection != null)
+            if (topIntersection != null && !topIntersection.GetComponent<IntersectionScript>().bottomQueue.isFull())
             {
                 int topDistance = topIntersection.GetComponent<IntersectionScript>().distanceTo(carToMove.GetComponent<CarScript>().destination);
                 if (topDistance <= shortestRouteValue)
@@ -226,7 +239,7 @@ public class IntersectionScript : MonoBehaviour {
                 }
             }
 
-            if (bottomIntersection != null)
+            if (bottomIntersection != null && !bottomIntersection.GetComponent<IntersectionScript>().topQueue.isFull())
             {
                 int bottomDistance = bottomIntersection.GetComponent<IntersectionScript>().distanceTo(carToMove.GetComponent<CarScript>().destination);
                 if (bottomDistance <= shortestRouteValue)
@@ -271,6 +284,7 @@ public class IntersectionScript : MonoBehaviour {
             else
             {
                 Debug.Log("NO SHORTEST PATH!?");
+                Destroy(carToMove);
             }
         }
 

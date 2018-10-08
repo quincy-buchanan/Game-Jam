@@ -66,8 +66,7 @@ public class CarQueue {
 		}
         else
         {
-            //Debug.Log("Full");
-            //Debug.Log(isFull());
+
         }
 	}
 

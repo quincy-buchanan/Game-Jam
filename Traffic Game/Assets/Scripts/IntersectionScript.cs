@@ -224,7 +224,7 @@ public class IntersectionScript : MonoBehaviour {
             {
                 carToMove.GetComponent<CarScript>().intersection = topIntersection;
                 carToMove.GetComponent<CarScript>().currentQueue = topIntersection.GetComponent<IntersectionScript>().bottomQueue;
-                carToMove.GetComponent<CarScript>().queueDirection = "t";
+                carToMove.GetComponent<CarScript>().queueDirection = "b";
                 topIntersection.GetComponent<IntersectionScript>().bottomQueue.PushCarEnd(carToMove);
                 carToMove.GetComponent<CarScript>().tick();
             }
@@ -232,7 +232,7 @@ public class IntersectionScript : MonoBehaviour {
             {
                 carToMove.GetComponent<CarScript>().intersection = bottomIntersection;
                 carToMove.GetComponent<CarScript>().currentQueue = bottomIntersection.GetComponent<IntersectionScript>().topQueue;
-                carToMove.GetComponent<CarScript>().queueDirection = "b";
+                carToMove.GetComponent<CarScript>().queueDirection = "t";
                 bottomIntersection.GetComponent<IntersectionScript>().topQueue.PushCarEnd(carToMove);
                 carToMove.GetComponent<CarScript>().tick();
             }
@@ -240,7 +240,7 @@ public class IntersectionScript : MonoBehaviour {
             {
                 carToMove.GetComponent<CarScript>().intersection = rightIntersection;
                 carToMove.GetComponent<CarScript>().currentQueue = rightIntersection.GetComponent<IntersectionScript>().leftQueue;
-                carToMove.GetComponent<CarScript>().queueDirection = "r";
+                carToMove.GetComponent<CarScript>().queueDirection = "l";
                 rightIntersection.GetComponent<IntersectionScript>().leftQueue.PushCarEnd(carToMove);
                 carToMove.GetComponent<CarScript>().tick();
             }
@@ -248,7 +248,7 @@ public class IntersectionScript : MonoBehaviour {
             {
                 carToMove.GetComponent<CarScript>().intersection = leftIntersection;
                 carToMove.GetComponent<CarScript>().currentQueue = leftIntersection.GetComponent<IntersectionScript>().rightQueue;
-                carToMove.GetComponent<CarScript>().queueDirection = "l";
+                carToMove.GetComponent<CarScript>().queueDirection = "r";
                 leftIntersection.GetComponent<IntersectionScript>().rightQueue.PushCarEnd(carToMove);
                 carToMove.GetComponent<CarScript>().tick();
             }

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class CarScript : MonoBehaviour {
 
+    //the intersection that the car is trying to reach
     public int destination;
 
+    //the car's current intersection
     public GameObject intersection;
+    //which direction (t/b/l/r) the queue the car is in is pointing
     public string queueDirection;
+    //the car's current queue within the 
     public CarQueue currentQueue;
 
 

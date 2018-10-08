@@ -265,58 +265,5 @@ public class IntersectionScript : MonoBehaviour {
         return distanceArray[destination];
     }
 
-    /*
-	public int distanceTo(string iString)
-	{
-        
-		if (intersectionString == iString)
-		{
-			return 0;
-		}
-		else
-		{
-			int topIntersectionDistanceTo, bottomIntersectionDistanceTo, leftIntersectionDistanceTo, rightIntersectionDistanceTo;
-			int leastDistanceTo = 99;
-
-			if (topIntersection != null)
-			{
-				topIntersectionDistanceTo = topIntersection.distanceTo (iString);
-				if (topIntersectionDistanceTo < leastDistanceTo)
-				{
-					leastDistanceTo = topIntersectionDistanceTo;
-				}
-			}
-
-			if (bottomIntersection != null)
-			{
-				bottomIntersectionDistanceTo = bottomIntersection.distanceTo (iString);
-				if (bottomIntersectionDistanceTo < leastDistanceTo)
-				{
-					leastDistanceTo = bottomIntersectionDistanceTo;
-				}
-			}
-
-			if (leftIntersection != null)
-			{
-				leftIntersectionDistanceTo = leftIntersection.distanceTo (iString);
-				if (leftIntersectionDistanceTo < leastDistanceTo)
-				{
-					leastDistanceTo = leftIntersectionDistanceTo;
-				}
-			}
-
-			if (rightIntersection != null)
-			{
-				rightIntersectionDistanceTo = rightIntersection.distanceTo (iString);
-				if (rightIntersectionDistanceTo < leastDistanceTo)
-				{
-					leastDistanceTo = rightIntersectionDistanceTo;
-				}
-			}
-
-			return leastDistanceTo;
-		}
-        
-	}
-    */
+    
 }

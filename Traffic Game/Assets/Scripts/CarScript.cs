@@ -33,13 +33,13 @@ public class CarScript : MonoBehaviour {
     public void tick()
     {
         if (queueDirection.Equals("t"))
-            gameObject.transform.position = intersection.transform.position + new Vector3(0, currentQueue.GetPositionInQueue(gameObject) * 2 + 2); //may need to be different
+            gameObject.transform.position = intersection.transform.position + new Vector3(0, currentQueue.GetPositionInQueue(gameObject) + 1); //may need to be different
         if (queueDirection.Equals("b"))
-            gameObject.transform.position = intersection.transform.position + new Vector3(0, currentQueue.GetPositionInQueue(gameObject) * -2 - 2);
+            gameObject.transform.position = intersection.transform.position + new Vector3(0, (currentQueue.GetPositionInQueue(gameObject) * -1) - 1);
         if (queueDirection.Equals("l"))
-            gameObject.transform.position = intersection.transform.position + new Vector3(currentQueue.GetPositionInQueue(gameObject) * -2 - 2, 0);
+            gameObject.transform.position = intersection.transform.position + new Vector3((currentQueue.GetPositionInQueue(gameObject) * -1) - 1, 0);
         if (queueDirection.Equals("r"))
-            gameObject.transform.position = intersection.transform.position + new Vector3(currentQueue.GetPositionInQueue(gameObject) * 2 + 2, 0);
+            gameObject.transform.position = intersection.transform.position + new Vector3(currentQueue.GetPositionInQueue(gameObject) + 1, 0);
 
         //remember to do direction of car
     }

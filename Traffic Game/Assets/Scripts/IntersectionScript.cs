@@ -12,6 +12,11 @@ public class IntersectionScript : MonoBehaviour {
     public bool rightLightOn = false;
     public bool bottomLightOn = false;
 
+    public bool topSpawnable = false;
+    public bool leftSpawnable = false;
+    public bool rightSpawnable = false;
+    public bool bottomSpawnable = false;
+
     public GameObject topIntersection, bottomIntersection, leftIntersection, rightIntersection;
 
 	public int intersectionInt;
@@ -66,13 +71,23 @@ public class IntersectionScript : MonoBehaviour {
 
     public void spawnCar(string dir, int destination)
     {
+        //exits if the queue doesn't exist or is full
         if (
             (dir.Equals("l") && leftQueue != null && leftQueue.isFull()) ||
             (dir.Equals("r") && rightQueue != null && rightQueue.isFull()) ||
             (dir.Equals("t") && topQueue != null && topQueue.isFull()) ||
             (dir.Equals("b") && bottomQueue != null && bottomQueue.isFull()))
         {
-            Debug.Log("Abort");
+            return;
+        }
+
+        //exits if the queue is not spawnable
+        if (
+            (dir.Equals("l") && !leftSpawnable) ||
+            (dir.Equals("r") && !rightSpawnable) ||
+            (dir.Equals("t") && !topSpawnable) ||
+            (dir.Equals("b") && !bottomSpawnable))
+        {
             return;
         }
 
@@ -102,6 +117,7 @@ public class IntersectionScript : MonoBehaviour {
         if (dir.Equals("r"))
             newCar.GetComponent<CarScript>().currentQueue = rightQueue;
 
+        newCar.GetComponent<CarScript>().initPosition();
         newCar.GetComponent<CarScript>().tick();
     }
 

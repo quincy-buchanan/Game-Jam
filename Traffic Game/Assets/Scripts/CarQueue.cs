@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CarQueue {
 
-    Car[] queue;
+    GameObject[] queue;
     int size;
     int numCars;
 
     public CarQueue(int size)
     {
         this.size = size;
-        queue = new Car[size];
+        queue = new GameObject[size];
         for (int i = 0; i < size; i++)
         {
             queue[i] = null;
@@ -20,7 +20,7 @@ public class CarQueue {
         numCars = 0;
     }
 
-    public Car[] GetQueue()
+    public GameObject[] GetQueue()
     {
         return queue;
     }
@@ -35,7 +35,7 @@ public class CarQueue {
         return numCars;
     }
 
-    public int GetPositionInQueue(Car c)
+    public int GetPositionInQueue(GameObject c)
     {
         for (int i = 0; i < size; i++)
         {
@@ -48,7 +48,7 @@ public class CarQueue {
         return -1;
     }
     
-    public void PushCar(Car c)
+    public void PushCar(GameObject c)
     {
         if (numCars < size)
         {
@@ -57,13 +57,18 @@ public class CarQueue {
         }
     }
 
-	public void PushCarEnd(Car c)
+	public void PushCarEnd(GameObject c)
 	{
-		if (queue[size] == null)
+		if (queue[size - 1] == null)
 		{
-			queue [size] = c;
+			queue [size - 1] = c;
 			numCars++;
 		}
+        else
+        {
+            //Debug.Log("Full");
+            //Debug.Log(isFull());
+        }
 	}
 
 	public void MoveCars()
@@ -74,20 +79,24 @@ public class CarQueue {
 			{
 				queue [i] = queue [i + 1];
 				queue [i + 1] = null;
-			}
+                if (queue[i] != null)
+                    queue[i].GetComponent<CarScript>().tick(); //this is bad practice
+            }
 		}
 	}
 
-    public Car PopCar()
+    public GameObject PopCar()
     {
         if (numCars > 0)
         {
-            Car tempCar = queue[0];
+            GameObject tempCar = queue[0];
             for (int i = 0; i < size - 1; i++)
             {
                 queue[i] = queue[i + 1];
+                if (queue[i] != null)
+                    queue[i].GetComponent<CarScript>().tick(); //this is bad practice
             }
-            queue[size] = null;
+            queue[size - 1] = null;
             numCars--;
             return tempCar;
         }
@@ -95,5 +104,10 @@ public class CarQueue {
         {
             return null;
         }
+    }
+
+    public bool isFull()
+    {
+        return numCars >= size;
     }
 }

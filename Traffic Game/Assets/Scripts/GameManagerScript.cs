@@ -40,6 +40,6 @@ public class GameManagerScript : MonoBehaviour {
             intersectionArray[i].GetComponent<IntersectionScript>().tick();
         }
 
-        intersectionArray[1].GetComponent<IntersectionScript>().spawnCar("l", 2);
+        intersectionArray[3].GetComponent<IntersectionScript>().spawnCar("r", 7);
     }
 }
